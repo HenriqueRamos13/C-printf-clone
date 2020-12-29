@@ -23,22 +23,33 @@ static	void	*sanitize_var(char type, void *var)
 		return (var);
 	else if (type == 'o')
 	{
-		char	*final;
+		char		*final;
+		int	copy;
+
+		copy = (int)var;
 
 		final = ft_calloc(sizeof(char), (int)var < 0 ? 9 : 10);
-		if ((int)var < 0)
+		if (copy < 0)
+		{
 			final[0] = '-';
-		ft_itoab((int)var, final, "01234567");
+			copy = copy * -1;
+		}
+		ft_itoab(copy, final, "01234567");
 		return (final);
 	}
 	else if (type == 'x' || type == 'X')
 	{
-		char	*final;
+		char		*final;
+		int	copy;
 
+		copy = (int)var;
 		final = ft_calloc(sizeof(char), (int)var < 0 ? 9 : 10);
-		if ((int)var < 0)
+		if (copy < 0)
+		{
 			final[0] = '-';
-		ft_itoab((int)var, final, type == 'x' ? "0123456789abcdef" : "0123456789ABCDEF");
+			copy = copy * -1;
+		}
+		ft_itoab(copy, final, type == 'x' ? "0123456789abcdef" : "0123456789ABCDEF");
 		return (final);
 	}
 	else if (type == 'c')
@@ -84,7 +95,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%' && verify_contain(*(str + 1)) == 1)
 		{
-			var = sanitize_var(*(str + 1), va_arg(i_va_list, char *));
+			var = sanitize_var(*(str + 1), va_arg(i_va_list, void*));
 			write(1, var, ft_strlen(var));
 			str++;
 		}
