@@ -1,32 +1,42 @@
-LIBFT	= -L./libft -lft 
+LIBFT	= libft
 
-NAME	= libprintf.a
+NAME	= libftprintf.a
 
-SRCS	= main.c ft_itoab.c ft_printf.c
+MAIN	= main.c
+
+SRCS	= ft_format.c ft_get_num_params.c ft_itoab.c ft_print_char.c ft_print_hex.c ft_print_octal.c ft_print_string.c ft_print_with_verify.c ft_printf.c ft_verify_contain.c ft_print_int.c
 
 OBJS	= ${SRCS:.c=.o}
 
-INC	= ft_printf.h
+TESTLIB	= -L./libft -lft 
+
+INC	= ftprintf.h
 
 CFLAGS	= -Wall -Wextra -Werror
 
 CC	= gcc
 
 all:		${NAME}
-		ar rc ${NAME} ${OBJ}
+		
+${NAME}:	${OBJS}
+		make -C ${LIBFT}
+		cp ${LIBFT}/libft.a ./${NAME}
+		ar rc ${NAME} ${OBJS}
 		ranlib ${NAME}
 
-${NAME}:	${OBJ}
-		${CC} ${CFLAGS} -c ${SRCS} -I ${INC} ${LIBFT}
+%.o:		%.c ${INC}
+		${CC} ${CFLAGS} -c ${SRCS} -I ${INC}
+		
 
-test:		
-		${CC} ${CFLAGS} ${SRCS} ${LIBFT} -I ${INC} -o test.out -g -fsanitize=address
+test:
+		${CC} ${CFLAGS} ${MAIN} ${SRCS} ${TESTLIB} -I ${INC} -o test.out -g -fsanitize=address
 
 clean:		
-		rm -rf ${OBJ}
+		rm -rf ${OBJS}
 
 fclean:		clean
-		rm -rf ${NAME}
+		rm -rf ./*.a
+		rm -rf ./*.out*
 
 re:		fclean all
 
