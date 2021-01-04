@@ -4,7 +4,7 @@ NAME	= libftprintf.a
 
 MAIN	= main.c
 
-SRCS	= ft_format.c ft_get_num_params.c ft_itoab.c ft_print_char.c ft_print_hex.c ft_print_octal.c ft_print_string.c ft_print_with_verify.c ft_printf.c ft_verify_contain.c ft_print_int.c
+SRCS	= ft_format.c ft_get_num_params.c ft_itoab.c ft_print_char.c ft_print_hex.c ft_print_octal.c ft_print_string.c ft_print_with_verify.c ft_printf.c ft_verify_contain.c ft_print_int.c ft_print_uint.c
 
 OBJS	= ${SRCS:.c=.o}
 

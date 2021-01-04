@@ -9,15 +9,17 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int	num_param;
+	int	to_return;
 
+	to_return = 0;
 	num_param = get_num_params(str);
 	if (!(num_param > 0))
 	{
 		print(str);
-		return (0);
+		return (ft_strlen(str));
 	}
 	va_start(args, str);
-	print_with_verify(str, args);
+	to_return += print_with_verify(str, args);
 	va_end(args);
-	return (1);
+	return (to_return);
 }

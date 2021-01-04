@@ -18,13 +18,14 @@ typedef struct			s_struct
 int	ft_printf(const char *str, ...);
 void	ft_itoab(int n, char *p, char *base);
 int	get_num_params(const char *str);
-void	print_with_verify(const char *str, va_list args);
-int	verify_contain(char c, char *list);
-void	format(int c, va_list args);
-void	ft_print_char(char c);
-void	ft_print_string(char *str);
-void	ft_print_octal(int numi);
-void	ft_print_hex(int num, char *base);
-void	ft_print_int(int n);
+int	print_with_verify(const char *str, va_list args);
+int		verify_contain(char c, char *list);
+int		format(int c, va_list args);
+int		ft_print_char(char c);
+int		ft_print_string(char *str);
+int		ft_print_octal(int numi);
+int		ft_print_hex(int num, char *base);
+int		ft_print_int(int n);
+int		ft_print_uint(int n);
 
 #endif
