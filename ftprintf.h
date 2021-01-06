@@ -8,9 +8,9 @@
 # define OCTAL "01234567"
 # define HEXUPPER "0123456789ABCDEF"
 # define HEXLOWER "0123456789abcdef"
-# define CCONVERSIONS 	"cspdiouxXf%"
-# define CFLAGS 		"#-+ .*0123456789hljz"
-# define ALLSYMBOLS 	"cspdiouxXfyb%#-+ .*0123456789hLljz"
+# define CCONVERSIONS "cspdiouxXf%"
+# define CFLAGS "#-+ .*0123456789hljz"
+# define ALLSYMBOLS "cspdiouxXfyb%#-+ .*0123456789hLljz"
 typedef struct			s_struct
 {
 	char				type;
